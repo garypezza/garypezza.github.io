@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearing - Support</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3rem 1.5rem;
+        }
+        .container { max-width: 600px; width: 100%; }
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .icon { font-size: 4rem; margin-bottom: 1rem; }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        .tagline {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .section h2 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .section p, .section li {
+            color: #aaa;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .section li { padding: 0.3rem 0; }
+        .section li::before {
+            content: "\2022";
+            color: #555;
+            margin-right: 0.75rem;
+        }
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: #e0e0e0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            width: 100%;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #556;
+        }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+        .contact-form button {
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: opacity 0.2s;
+        }
+        .contact-form button:hover { opacity: 0.85; }
+        .back {
+            display: inline-block;
+            color: #666;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        .back:hover { color: #999; }
+        .privacy-note {
+            text-align: center;
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back">&larr; Back</a>
+
+        <div class="header">
+            <div class="icon">&#x23F3;</div>
+            <h1>Nearing</h1>
+            <p class="tagline">Beautiful countdown timers for the moments that matter.</p>
+        </div>
+
+        <div class="section">
+            <h2>About</h2>
+            <p>Nearing helps you count down to your important events with a clean, beautiful interface. Share countdowns with friends, customize colors, and add widgets to your home screen.</p>
+        </div>
+
+        <div class="section">
+            <h2>Features</h2>
+            <ul>
+                <li>Create countdowns for any date</li>
+                <li>Recurring events (weekly, monthly, yearly)</li>
+                <li>Custom colors and emoji</li>
+                <li>Share countdowns with friends</li>
+                <li>Home screen widgets</li>
+                <li>iCloud sync across devices</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Support</h2>
+            <p style="margin-bottom: 1rem;">Having an issue or have a suggestion? Send a message and we'll get back to you.</p>
+            <form class="contact-form" action="https://formspree.io/f/mwvwkbpq" method="POST">
+                <input type="email" name="email" placeholder="Your email" required>
+                <input type="text" name="subject" placeholder="Subject">
+                <textarea name="message" placeholder="Describe your issue or suggestion..." required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <p class="privacy-note">Nearing does not collect any personal data. Your countdowns are stored on your device and synced via your iCloud account.</p>
+    </div>
+</body>
+</html>
