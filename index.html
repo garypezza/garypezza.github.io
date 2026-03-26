@@ -3,79 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gary Pezza - Apps</title>
+    <title>Gary Pezza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #F6F3EE;
+            --bg-card: #FFFFFF;
+            --text: #1A1A1A;
+            --text-secondary: #7A756D;
+            --border: #E8E4DD;
+            --accent: #C4581A;
+            --serif: 'DM Serif Display', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .page {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            min-height: 100vh;
+            padding: 4rem 2rem;
         }
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: #fff;
+        .intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeUp 0.8s ease-out both;
         }
-        .subtitle {
-            color: #888;
-            margin-bottom: 3rem;
+        .intro h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
         }
+        .intro p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
         .apps {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             justify-content: center;
+            animation: fadeUp 0.8s ease-out 0.15s both;
         }
         .app-card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            padding: 2rem;
-            width: 280px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 320px;
             text-decoration: none;
             color: inherit;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.35s cubic-bezier(0.2, 0, 0, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .app-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), #E07B3A);
+            opacity: 0;
+            transition: opacity 0.35s ease;
         }
         .app-card:hover {
-            border-color: #444;
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.04);
         }
+        .app-card:hover::after { opacity: 1; }
+
         .app-icon {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         .app-icon img {
-            width: 64px;
-            height: 64px;
-            border-radius: 14px;
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .app-card h2 {
-            font-size: 1.25rem;
-            color: #fff;
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 400;
             margin-bottom: 0.5rem;
         }
         .app-card p {
-            color: #888;
-            font-size: 0.9rem;
-            line-height: 1.5;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        .app-card .arrow {
+            display: inline-block;
+            margin-top: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: transform 0.25s ease;
+        }
+        .app-card:hover .arrow { transform: translateX(4px); }
+
+        .footer {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .app-card { width: 100%; max-width: 320px; }
+            .page { padding: 3rem 1.25rem; }
         }
     </style>
 </head>
 <body>
-    <h1>Gary Pezza</h1>
-    <p class="subtitle">Apps</p>
-    <div class="apps">
-        <a href="/nearing" class="app-card">
-            <div class="app-icon"><img src="nearing-icon.png" alt="Nearing"></div>
-            <h2>Nearing</h2>
-            <p>Beautiful countdown timers for the moments that matter.</p>
-        </a>
+    <div class="page">
+        <div class="intro">
+            <h1>Gary Pezza</h1>
+            <p>Apps</p>
+        </div>
+        <div class="apps">
+            <a href="/nearing" class="app-card">
+                <div class="app-icon"><img src="nearing-icon.png" alt="Nearing"></div>
+                <h2>Nearing</h2>
+                <p>Beautiful countdown timers for the moments that matter.</p>
+                <span class="arrow">Learn more &rarr;</span>
+            </a>
+        </div>
     </div>
 </body>
 </html>
