@@ -9,12 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F6F3EE;
-            --bg-card: #FFFFFF;
-            --text: #1A1A1A;
-            --text-secondary: #7A756D;
-            --border: #E8E4DD;
-            --accent: #C4581A;
+            --bg: #f7f5f0;
+            --bg-card: #ffffff;
+            --text: #171717;
+            --text-secondary: #68635b;
+            --border: #e3ded5;
+            --accent: #23664f;
+            --accent-warm: #b15f2e;
             --serif: 'DM Serif Display', Georgia, serif;
             --sans: 'DM Sans', system-ui, sans-serif;
         }
@@ -38,46 +39,107 @@
         }
 
         .page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem 4rem;
+        }
+        .shell {
+            width: min(100%, 980px);
+            margin: 0 auto;
+        }
+        .hero {
+            display: grid;
+            gap: 2rem;
+            min-height: calc(100vh - 9rem);
+            align-content: center;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+            animation: fadeUp 0.8s ease-out both;
         }
         .intro {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeUp 0.8s ease-out both;
+            max-width: 760px;
+        }
+        .eyebrow {
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
         }
         .intro h1 {
             font-family: var(--serif);
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(3.25rem, 9vw, 7rem);
             font-weight: 400;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
+            letter-spacing: 0;
+            line-height: 0.95;
+            margin-bottom: 1.25rem;
         }
         .intro p {
-            font-size: 1.05rem;
+            max-width: 600px;
+            font-size: clamp(1.15rem, 2vw, 1.45rem);
             color: var(--text-secondary);
             font-weight: 300;
-            letter-spacing: 0.02em;
+            line-height: 1.55;
+        }
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+        }
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 1.2rem;
+            border: 1px solid var(--text);
+            border-radius: 6px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+        .link-button.primary {
+            background: var(--text);
+            color: var(--bg-card);
+        }
+        .link-button:hover {
+            transform: translateY(-2px);
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
         }
 
         .apps {
+            padding-top: 3rem;
+            animation: fadeUp 0.8s ease-out 0.12s both;
+        }
+        .section-heading {
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-            animation: fadeUp 0.8s ease-out 0.15s both;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-heading h2 {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+        }
+        .section-heading p {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
         }
         .app-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 8px;
             padding: 2.5rem;
-            width: 320px;
             text-decoration: none;
             color: inherit;
             transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.35s cubic-bezier(0.2, 0, 0, 1);
@@ -89,7 +151,7 @@
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--accent), #E07B3A);
+            background: linear-gradient(90deg, var(--accent), var(--accent-warm));
             opacity: 0;
             transition: opacity 0.35s ease;
         }
@@ -148,30 +210,49 @@
         }
 
         @media (max-width: 480px) {
-            .app-card { width: 100%; max-width: 320px; }
             .page { padding: 3rem 1.25rem; }
+            .hero { min-height: auto; padding-bottom: 2.5rem; }
+            .app-grid { grid-template-columns: 1fr; }
+            .section-heading { display: block; }
+            .section-heading p { margin-top: 0.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <div class="intro">
-            <h1>Gary Pezza</h1>
-            <p>Apps</p>
-        </div>
-        <div class="apps">
-            <a href="/nearing" class="app-card">
-                <div class="app-icon"><img src="nearing-icon.png" alt="Nearing"></div>
-                <h2>Nearing</h2>
-                <p>Beautiful countdown timers for the moments that matter.</p>
-                <span class="arrow">Learn more &rarr;</span>
-            </a>
-            <a href="/license-quest" class="app-card">
-                <div class="app-icon"><img src="license-quest-icon.png" alt="License Quest"></div>
-                <h2>License Quest</h2>
-                <p>The classic road trip license plate game for iPhone and iPad.</p>
-                <span class="arrow">Learn more &rarr;</span>
-            </a>
+        <div class="shell">
+            <section class="hero">
+                <div class="intro">
+                    <p class="eyebrow">Software, product, and useful small tools</p>
+                    <h1>Gary Pezza</h1>
+                    <p>I build practical software, personal utilities, and focused apps for the web and iOS.</p>
+                </div>
+                <div class="links" aria-label="Profile links">
+                    <a class="link-button primary" href="https://www.linkedin.com/in/garypezza/">LinkedIn</a>
+                    <a class="link-button" href="https://github.com/garypezza">GitHub</a>
+                </div>
+            </section>
+
+            <section class="apps" aria-labelledby="apps-heading">
+                <div class="section-heading">
+                    <h2 id="apps-heading">Apps</h2>
+                    <p>A few small things I have shipped.</p>
+                </div>
+                <div class="app-grid">
+                    <a href="/nearing" class="app-card">
+                        <div class="app-icon"><img src="nearing-icon.png" alt="Nearing"></div>
+                        <h2>Nearing</h2>
+                        <p>Beautiful countdown timers for the moments that matter.</p>
+                        <span class="arrow">Learn more &rarr;</span>
+                    </a>
+                    <a href="/license-quest" class="app-card">
+                        <div class="app-icon"><img src="license-quest-icon.png" alt="License Quest"></div>
+                        <h2>License Quest</h2>
+                        <p>The classic road trip license plate game for iPhone and iPad.</p>
+                        <span class="arrow">Learn more &rarr;</span>
+                    </a>
+                </div>
+            </section>
         </div>
     </div>
 </body>
