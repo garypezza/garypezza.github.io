@@ -158,7 +158,7 @@
         .ai-lead strong { color: var(--text); font-weight: 500; }
         .stat-band {
             display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 1rem;
             margin-bottom: 2.25rem;
         }
@@ -290,8 +290,7 @@
         @media (max-width: 640px) {
             .page { padding: 3rem 1.25rem 4rem; }
             .hero { min-height: auto; padding-bottom: 2.5rem; }
-            .app-grid, .range-grid, .ai-detail { grid-template-columns: 1fr; }
-            .stat-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .app-grid, .range-grid, .ai-detail, .stat-band { grid-template-columns: 1fr; }
             .section-heading { display: block; }
             .section-heading p { margin-top: 0.5rem; }
             .xp-row { grid-template-columns: 1fr; gap: 0.4rem; }
@@ -393,10 +392,6 @@
                         <div class="num">6,800+</div>
                         <div class="label">conversation turns analyzed</div>
                     </div>
-                    <div class="stat">
-                        <div class="num">2</div>
-                        <div class="label">agents: Claude Code &amp; Codex</div>
-                    </div>
                 </div>
                 <div class="ai-detail">
                     <div class="ai-card">
@@ -430,8 +425,8 @@
                         <p>Building in Godot and GDScript: arcade shooters and experiments, picking up where the Requiem game engine left off.</p>
                     </div>
                     <div class="range-card">
-                        <h3>Little web tools</h3>
-                        <p>Small Python and TypeScript utilities I built for myself: scrapers, self-hosting helpers, trackers.</p>
+                        <h3>Sites and web apps</h3>
+                        <p>Full-stack work in Next.js and React, from simple personal sites like this one to a fielded estimating tool with a custom pricing engine, accounts, and PDF quotes.</p>
                     </div>
                 </div>
             </section>
