@@ -146,6 +146,60 @@
         .xp-role .co { color: var(--accent); font-weight: 500; }
         .xp-role p { color: var(--text-secondary); font-weight: 300; line-height: 1.55; font-size: 0.98rem; }
 
+        /* ---------- AI practice ---------- */
+        .ai-lead {
+            max-width: 720px;
+            font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 2.25rem;
+        }
+        .ai-lead strong { color: var(--text); font-weight: 500; }
+        .stat-band {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.25rem;
+        }
+        .stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem 1.25rem;
+        }
+        .stat .num {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            line-height: 1;
+            color: var(--accent);
+        }
+        .stat .label {
+            margin-top: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.35;
+        }
+        .ai-detail {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .ai-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.75rem;
+        }
+        .ai-card h3 {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .ai-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; font-weight: 300; }
+
         /* ---------- Range ---------- */
         .range-grid {
             display: grid;
@@ -236,7 +290,8 @@
         @media (max-width: 640px) {
             .page { padding: 3rem 1.25rem 4rem; }
             .hero { min-height: auto; padding-bottom: 2.5rem; }
-            .app-grid, .range-grid { grid-template-columns: 1fr; }
+            .app-grid, .range-grid, .ai-detail { grid-template-columns: 1fr; }
+            .stat-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
             .section-heading { display: block; }
             .section-heading p { margin-top: 0.5rem; }
             .xp-row { grid-template-columns: 1fr; gap: 0.4rem; }
@@ -314,6 +369,43 @@
                             <h3>Senior Software Engineer · <span class="co">Raytheon</span></h3>
                             <p>Led the infrastructure team on the $2B Zumwalt-class destroyer program, building common C++ tooling to integrate simulation systems. Three performance awards.</p>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ BUILDING WITH AI ============ -->
+            <section class="section">
+                <div class="section-heading">
+                    <h2>Building with AI</h2>
+                    <p>I instrument my own AI coding and tune the setup with real evals.</p>
+                </div>
+                <p class="ai-lead">Most of my building now happens alongside coding agents. To get better at it, I treat my own workflow as something to <strong>measure and improve</strong>, not just a habit. I log every Claude Code and Codex session into a database and study how I actually work with AI.</p>
+                <div class="stat-band">
+                    <div class="stat">
+                        <div class="num">700+</div>
+                        <div class="label">AI coding sessions logged</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">51</div>
+                        <div class="label">projects across the sessions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">6,800+</div>
+                        <div class="label">conversation turns analyzed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">2</div>
+                        <div class="label">agents: Claude Code &amp; Codex</div>
+                    </div>
+                </div>
+                <div class="ai-detail">
+                    <div class="ai-card">
+                        <h3>Measuring how I direct the work</h3>
+                        <p>One report classifies every prompt I write (planning, course-correction, redirect, learning) to separate the output I actively directed from what the model produced on its own. It turns a vague sense of "vibe coding" into numbers I can track over time.</p>
+                    </div>
+                    <div class="ai-card">
+                        <h3>Tuning the setup with evals, not vibes</h3>
+                        <p>To improve my context, skills, and tools, I run an offline evaluation loop: I hand-review conversations as ground truth, then score prompt and model versions against those labels so I can compare changes honestly instead of by feel.</p>
                     </div>
                 </div>
             </section>
